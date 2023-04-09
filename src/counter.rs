@@ -35,3 +35,12 @@ pub fn count(ts: &mut TermStream, cnt: &mut HashMap<[u8; 2], i128>) {
         }
     }
 }
+
+pub fn all_zero(cnt: &HashMap<[u8; 2],i128>) -> bool {
+    for (_, v) in cnt.iter() {
+        if *v != 0 {
+            return false;
+        }
+    }
+    true
+}
