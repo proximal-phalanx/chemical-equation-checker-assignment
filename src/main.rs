@@ -1,7 +1,7 @@
 #[cfg(test)]
 mod test;
 mod token_stream;
-mod count;
+mod counter;
 mod token;
 mod term_stream;
 

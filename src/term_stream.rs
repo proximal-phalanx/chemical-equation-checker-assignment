@@ -68,7 +68,7 @@ impl TermStream {
                     self.neg = true;
                     break;
                 }
-                Token::Element(_) | Token::RPara => {
+                Token::RPara => {
                     let next_token = if self.eof() {
                         Token::Plus
                     } else {
@@ -80,6 +80,26 @@ impl TermStream {
                         }
                         _ => {
                             mid.push(tk);
+                            mid.push(Token::Number(1));
+                        }
+                    }
+                }
+                Token::Element(_) => {
+                    let next_token = if self.eof() {
+                        Token::Plus
+                    } else {
+                        self.peek_token()
+                    };
+                    match next_token {
+                        Token::Number(_) => {
+                            mid.push(Token::LPara);
+                            mid.push(tk);
+                            mid.push(Token::RPara);
+                        }
+                        _ => {
+                            mid.push(Token::LPara);
+                            mid.push(tk);
+                            mid.push(Token::RPara);
                             mid.push(Token::Number(1));
                         }
                     }
