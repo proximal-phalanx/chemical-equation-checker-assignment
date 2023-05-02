@@ -28,14 +28,6 @@ impl TermStream {
     fn peek_token(&self) -> Token {
         self.source[self.index].clone()
     }
-    fn cur_token(&self) -> Token {
-        if self.index == 0 {
-            Token::Plus
-        }
-        else{
-            self.source[self.index - 1].clone()
-        }
-    }
 }
 
 impl TermStream {
